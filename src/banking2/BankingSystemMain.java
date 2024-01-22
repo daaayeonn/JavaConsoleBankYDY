@@ -5,12 +5,13 @@ import java.util.Scanner;
 public class BankingSystemMain {
 	
 	public static void showMenu() {
-		System.out.println("-----Menu-----");
-		System.out.println("1. 계좌개설");
-		System.out.println("2. 입금");
-		System.out.println("3. 출금");
-		System.out.println("4. 계좌정보출력");
+		System.out.println("\n---------------------- Menu ----------------------");
+		System.out.print("1. 계좌개설  ");
+		System.out.print("2. 입금  ");
+		System.out.print("3. 출금  ");
+		System.out.print("4. 계좌정보출력  ");
 		System.out.println("5. 프로그램종료");
+		System.out.println("--------------------------------------------------");
 		System.out.print("메뉴를 선택하세요: ");
 	}
 
@@ -37,7 +38,7 @@ public class BankingSystemMain {
 				handler.showAccInfo();
 				break;
 			case ICustomDefine.EXIT:
-				 System.out.println("프로그램 종료");
+				 System.out.println("\n             ◇◇◇ 프로그램이 종료되었습니다. ◇◇◇");
 				return;
 			} // switch 끝
 		} // while 끝

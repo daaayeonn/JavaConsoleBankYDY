@@ -47,10 +47,11 @@ public class AccountInfoHandler {
 				System.out.println("입금이 완료되었습니다.");
 			}
 			
-			if (isFind == false) {
-				System.out.println("***없는 계좌번호 입니다.***");
-			}
 		} // for문 끝
+		
+		if (isFind == false) {
+			System.out.println("***없는 계좌번호 입니다.***");
+		}
 	} // defositMoney 끝
 	
 	// 출금
@@ -72,10 +73,11 @@ public class AccountInfoHandler {
 				System.out.println("출금이 완료되었습니다.");
 			}
 			
-			if (isFind == false) {
-				System.out.println("***없는 계좌번호 입니다.***");
-			}
 		} // for문 끝
+		
+		if (isFind == false) {
+			System.out.println("***없는 계좌번호 입니다.***");
+		}
 	} // withdrawMoney 끝
 	
 	// 계좌 전체 정보 출력
