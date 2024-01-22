@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class AccountInfoHandler {
 	private Account[] accountLists;
+	private NormalAccount[] normalAccountLists;
 	private int numOfAccount;
 	
 	public AccountInfoHandler() {
@@ -12,32 +13,42 @@ public class AccountInfoHandler {
 	}
 	
 	// 계좌 개설
-	public void makeAccount() {
+	public void makeAccount(int choice) {
 		Scanner scan = new Scanner(System.in);
-		String iAccount, iName;
-		int iBalance, iInterest;
+		String iAccount, iName, iGrade;
+		int iBalance;
+		double iInterest;
 		
 		System.out.println("***신규 계좌개설***");
 		System.out.println("-----계좌선택-----");
 		System.out.println("1. 보통계좌");
 		System.out.println("2. 신용신뢰계좌");
 		System.out.print("메뉴를 선택해주세요: ");
+			
+		choice = scan.nextInt();
 		
-		int choice = scan.nextInt();
+		System.out.print("계좌번호: "); iAccount = scan.next();
+		System.out.print("고객이름: "); iName = scan.next();
+		System.out.print("잔고: "); iBalance = scan.nextInt();
 		
-		if(choice == 1) {
-			System.out.print("계좌번호: "); iAccount = scan.nextLine();
-			System.out.print("고객이름: "); iName = scan.nextLine();
-			System.out.print("잔고: "); iBalance = scan.nextInt();
+		// 보통계좌
+		if (choice == 1) {
 			System.out.print("기본이자: "); iInterest = scan.nextInt();
 			
-			NormalAccount normal = new NormalAccount(iAccount, iName, 
-					iBalance, iInterest);
-			accountLists[numOfAccount++] = normal;
+			accountLists[numOfAccount++] = new NormalAccount(
+					iAccount, iName, iBalance, iInterest);
 		}
+		// 신용신뢰계좌
+		else if (choice == 2) {
+			System.out.print("기본이자: "); iInterest = scan.nextInt();
+			System.out.print("신용등급(A, B, C): "); iGrade = scan.next();
+			
+			accountLists[numOfAccount++] = new HighCreditAccount(iAccount, 
+					iName, iBalance, iInterest, iGrade);
+		}
+
+		System.out.println("계좌개설이 완료되었습니다.");	
 		
-		
-		System.out.println("계좌개설이 완료되었습니다.");
 	} // makeAccount end
 	
 	// 입금

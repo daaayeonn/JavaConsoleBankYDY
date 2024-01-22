@@ -37,27 +37,27 @@ class NormalAccount extends Account {
 	@Override
 	public void showAccInfo() {
 		super.showAccInfo();
-		System.out.println("기본이자: " + interest);
+		System.out.println("기본이자: " + Math.floor(interest) + "%");
 		System.out.println("-------");
 	}
 }
 
 class HighCreditAccount extends Account {
 	double interest;
-	String credit;
+	String grade;
 
 	public HighCreditAccount(String account, String name, int balance,
-			double interest, String credit) {
+			double interest, String grade) {
 		super(account, name, balance);
 		this.interest = interest;
-		this.credit = credit;
+		this.grade = grade;
 	}
 	
 	@Override
 	public void showAccInfo() {
 		super.showAccInfo();
-		System.out.println("기본이자: " + interest);
-		System.out.println("신용등급(A, B, C): " + credit);
+		System.out.println("기본이자: " + Math.floor(interest) + "%");
+		System.out.println("신용등급: " + grade);
 		System.out.println("-------");
 	}
 }
