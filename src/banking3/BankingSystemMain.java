@@ -47,12 +47,15 @@ public class BankingSystemMain {
 					}
 					else {
 						MenuSelectException ex = new MenuSelectException();
-						System.out.println(ex);
+						throw ex;
 					}
 				}
 				catch (InputMismatchException e) {
 					System.out.println("\n잘못 입력하셨습니다. 숫자로 입력해주세요.");
 					scan.next();
+				}
+				catch (MenuSelectException e) {
+					System.out.println(e.getMessage());
 				}
 			} // while 끝
 	} // main 끝
