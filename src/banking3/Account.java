@@ -5,7 +5,7 @@ package banking3;
 된다.
 */
 
-public abstract class Account {
+abstract public class Account {
 	String account;
 	String name;
 	int balance;
