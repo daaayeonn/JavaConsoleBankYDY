@@ -1,5 +1,6 @@
 package banking3;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class AccountInfoHandler {
@@ -56,32 +57,46 @@ public class AccountInfoHandler {
 		System.out.println("\n계좌번호와 입금할 금액을 입력하세요.");
 		System.out.println();
 		String iAccount;
-		int defosit;
+		int deposit;
 		boolean isFind = false;
 		
 		System.out.print("계좌번호: "); iAccount = scan.nextLine();
 		for (int i = 0; i < numOfAccount; i++) {
 			if(iAccount.equals(accountLists[i].account)) {
 				isFind = true;
-				
-				System.out.print("입금액: "); defosit = scan.nextInt();
-				accountLists[i].calculate();
-				accountLists[i].balance += defosit;
-				
-				System.out.println("\n입금이 완료되었습니다.");
+				// 문자로 입력 금지
+				try {
+					System.out.print("입금액: "); deposit = scan.nextInt();
+					// 음수 금액은 입금 X
+					if (deposit <= 0) {
+						System.out.println("\n금액을 정확히 입력해주세요.");
+						return;
+					}
+					// 500원 단위로만 입금 가능
+					else if (deposit%500 != 0) {
+						System.out.println("500원 단위로만 입금이 가능합니다.");
+						return;
+					}
+					accountLists[i].calculate();
+					accountLists[i].balance += deposit;
+					
+					System.out.println("\n입금이 완료되었습니다.");
+				} // try 끝
+				catch (InputMismatchException e) {
+					System.out.println("\n잘못 입력하셨습니다. 숫자로 입력해주세요.");
+				} // catch 끝
 			}
-			
 		} // for문 끝
 		
 		if (isFind == false) {
 			System.out.println("\n없는 계좌번호입니다.");
 		}
-	} // defositMoney 끝
+	} // depositMoney 끝
 	
 	// 출금
 	public void withdrawMoney() {
 		Scanner scan = new Scanner(System.in);
-		System.out.println("\n계좌번호와 금할 금액을 입력하세요.");
+		System.out.println("\n계좌번호와 출금할 금액을 입력하세요.");
 		String iAccount;
 		int withdraw;
 		boolean isFind = false;
@@ -91,12 +106,47 @@ public class AccountInfoHandler {
 			if (iAccount.equals(accountLists[i].account)) {
 				isFind = true;
 				
-				System.out.print("출금액: "); withdraw = scan.nextInt();
-				accountLists[i].balance -= withdraw;
-				
-				System.out.println("\n출금이 완료되었습니다.");
+				try {
+					System.out.print("출금액: "); withdraw = scan.nextInt();
+					// 잔액부족 시
+					if (accountLists[i].balance < withdraw) {
+						String choice;
+						
+						System.out.println("\n잔액이 부족합니다. 금액 전체를 출금할까요?");
+						System.out.print("\nY: 금액 전체 출금   ");
+						System.out.print("N: 출금 취소");
+						System.out.print("\n메뉴를 선택하세요: ");
+						choice = scan.next();
+						
+						if (choice.equalsIgnoreCase("y")) {
+							accountLists[i].balance -= accountLists[i].balance;
+							System.out.println("\n출금이 완료되었습니다.");
+							return;
+						}
+						else if (choice.equalsIgnoreCase("n")) {
+							System.out.println("\n출금이 취소되었습니다.");
+							return;
+						}
+					}
+					
+					// 음수 출금 X
+					if (withdraw <= 0) {
+						System.out.println("\n금액을 정확히 입력해주세요.");
+						return;
+					}
+					else if (withdraw % 1000 != 0) {
+						System.out.println("1000원 단위로만 출금이 가능합니다.");
+						return;
+					}
+					accountLists[i].balance -= withdraw;
+					
+					System.out.println("\n출금이 완료되었습니다.");
+					
+				} // try 끝
+				catch (InputMismatchException e) {
+					System.out.println("\n잘못 입력하셨습니다. 숫자로 입력해주세요.");
+				} // catch 끝
 			}
-			
 		} // for문 끝
 		
 		if (isFind == false) {

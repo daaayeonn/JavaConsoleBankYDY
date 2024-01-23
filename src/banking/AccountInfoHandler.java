@@ -33,7 +33,7 @@ public class AccountInfoHandler {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("계좌번호와 입금할 금액을 입력하세요");
 		String iAccount;
-		int defosit;
+		int deposit;
 		boolean isFind = false;
 		
 		System.out.print("계좌번호: "); iAccount = scan.nextLine();
@@ -41,8 +41,8 @@ public class AccountInfoHandler {
 			if(iAccount.equals(accountLists[i].account)) {
 				isFind = true;
 				
-				System.out.print("입금액: "); defosit = scan.nextInt();
-				accountLists[i].balance += defosit;
+				System.out.print("입금액: "); deposit = scan.nextInt();
+				accountLists[i].balance += deposit;
 				
 				System.out.println("입금이 완료되었습니다.");
 			}
@@ -52,7 +52,7 @@ public class AccountInfoHandler {
 		if (isFind == false) {
 			System.out.println("***없는 계좌번호 입니다.***");
 		}
-	} // defositMoney 끝
+	} // depositMoney 끝
 	
 	// 출금
 	public void withdrawMoney() {

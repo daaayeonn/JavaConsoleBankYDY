@@ -19,13 +19,12 @@ public class BankingSystemMain {
 	public static void main(String[] args) throws MenuSelectException {
 		Scanner scan = new Scanner(System.in);
 		AccountInfoHandler handler = new AccountInfoHandler();
-
+		
 		try {
 			while(true) {
 				showMenu();
 				
 					int choice = scan.nextInt();
-					if (choice > 5) {
 					
 					switch(choice) {
 					case ICustomDefine.MAKE:
@@ -44,15 +43,11 @@ public class BankingSystemMain {
 						System.out.println("\n             ◇◇◇ 프로그램이 종료되었습니다. ◇◇◇");
 						return;
 					} // switch 끝
-					
-					MenuSelectException ex = new MenuSelectException();
-					throw ex;
-				} // if 끝
 			} // while 끝
-		} // try 끝
+		}
 		catch (InputMismatchException e) {
-			System.err.println("\n※※ 잘못 입력하셨습니다. ※※");
+			System.out.println("\n잘못 입력하셨습니다. 숫자로 입력해주세요.");
 		}
 	} // main 끝
-
-}
+	
+} //BankingSystemMain 끝
