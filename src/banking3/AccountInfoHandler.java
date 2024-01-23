@@ -74,7 +74,7 @@ public class AccountInfoHandler {
 					}
 					// 500원 단위로만 입금 가능
 					else if (deposit%500 != 0) {
-						System.out.println("500원 단위로만 입금이 가능합니다.");
+						System.out.println("\n500원 단위로만 입금이 가능합니다.");
 						return;
 					}
 					accountLists[i].calculate();
@@ -101,7 +101,7 @@ public class AccountInfoHandler {
 		int withdraw;
 		boolean isFind = false;
 		
-		System.out.print("계좌번호: "); iAccount = scan.nextLine();
+		System.out.print("\n계좌번호: "); iAccount = scan.nextLine();
 		for (int i = 0; i < numOfAccount; i++) {
 			if (iAccount.equals(accountLists[i].account)) {
 				isFind = true;
@@ -113,8 +113,7 @@ public class AccountInfoHandler {
 						String choice;
 						
 						System.out.println("\n잔액이 부족합니다. 금액 전체를 출금할까요?");
-						System.out.print("\nY: 금액 전체 출금   ");
-						System.out.print("N: 출금 취소");
+						System.out.println("\ny or n");
 						System.out.print("\n메뉴를 선택하세요: ");
 						choice = scan.next();
 						

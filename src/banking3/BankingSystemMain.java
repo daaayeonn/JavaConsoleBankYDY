@@ -20,34 +20,41 @@ public class BankingSystemMain {
 		Scanner scan = new Scanner(System.in);
 		AccountInfoHandler handler = new AccountInfoHandler();
 		
-		try {
 			while(true) {
+				try {
 				showMenu();
-				
+						
 					int choice = scan.nextInt();
 					
-					switch(choice) {
-					case ICustomDefine.MAKE:
-						handler.makeAccount(choice);
-						break;
-					case ICustomDefine.DEPOSIT:
-						handler.depositMoney();
-						break;
-					case ICustomDefine.WITHDRAW:
-						handler.withdrawMoney();
-						break;
-					case ICustomDefine.INQUIRE:
-						handler.showAccInfo();
-						break;
-					case ICustomDefine.EXIT:
-						System.out.println("\n             ◇◇◇ 프로그램이 종료되었습니다. ◇◇◇");
-						return;
-					} // switch 끝
+					if (choice <= 5 && choice > 0) {
+						switch(choice) {
+						case ICustomDefine.MAKE:
+							handler.makeAccount(choice);
+							break;
+						case ICustomDefine.DEPOSIT:
+							handler.depositMoney();
+							break;
+						case ICustomDefine.WITHDRAW:
+							handler.withdrawMoney();
+							break;
+						case ICustomDefine.INQUIRE:
+							handler.showAccInfo();
+							break;
+						case ICustomDefine.EXIT:
+							System.out.println("\n             ◇◇◇ 프로그램이 종료되었습니다. ◇◇◇");
+							return;
+						} // switch 끝
+					}
+					else {
+						MenuSelectException ex = new MenuSelectException();
+						System.out.println(ex);
+					}
+				}
+				catch (InputMismatchException e) {
+					System.out.println("\n잘못 입력하셨습니다. 숫자로 입력해주세요.");
+					scan.next();
+				}
 			} // while 끝
-		}
-		catch (InputMismatchException e) {
-			System.out.println("\n잘못 입력하셨습니다. 숫자로 입력해주세요.");
-		}
 	} // main 끝
 	
 } //BankingSystemMain 끝

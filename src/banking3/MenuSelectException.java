@@ -7,6 +7,8 @@ package banking3;
 public class MenuSelectException  extends Exception {
 
 	public MenuSelectException() {
-		super("1 ~ 5 사이의 정수를 입력해주세요.");
+		super();
+		System.out.println("\n잘못 입력하셨습니다.");
+		System.out.println("1 ~ 5 사이의 숫자를 입력해주세요.");
 	}
 }
