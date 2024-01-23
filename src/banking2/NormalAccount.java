@@ -12,7 +12,7 @@ public class NormalAccount  extends Account {
 	@Override
 	public void showAccInfo() {
 		super.showAccInfo();
-		System.out.println("기본이자: " + Math.floor(interest) + "%");
+		System.out.println("기본이자: " + (int)(interest) + "%");
 		System.out.println("--------------------------------------------------\n");
 	}
 	
