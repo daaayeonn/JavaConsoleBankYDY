@@ -1,4 +1,4 @@
-package banking3;
+package banking4;
 
 public class HighCreditAccount extends Account {
 	int interest;
@@ -16,7 +16,7 @@ public class HighCreditAccount extends Account {
 		super.showAccInfo();
 		System.out.println("기본이자: " + (int)interest + "%");
 		System.out.println("신용등급: " + grade);
-		System.out.println("--------------------------------------------------");
+		System.out.println("--------------------------------------------------\n");
 	}
 	
 	@Override
