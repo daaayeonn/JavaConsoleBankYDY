@@ -27,7 +27,8 @@ public class BankingSystemMain {
 						
 					int choice = scan.nextInt();
 					
-					if (choice <= 5 && choice > 0) {
+					// 1 ~ 6까지만 선택 가능
+					if (choice <= 6 && choice > 0) {
 						switch(choice) {
 						case ICustomDefine.MAKE:
 							handler.makeAccount(choice);
@@ -49,11 +50,12 @@ public class BankingSystemMain {
 							return;
 						} // switch 끝
 					}
+					// 사용자 정의 예외
 					else {
 						MenuSelectException ex = new MenuSelectException();
 						throw ex;
 					}
-				}
+				} // try 끝
 				catch (InputMismatchException e) {
 					System.out.println("\n잘못 입력하셨습니다. 숫자로 입력해주세요.");
 					scan.next();
