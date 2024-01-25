@@ -73,7 +73,7 @@ public class AccountInfoHandler {
 				// 문자로 입력 금지
 				try {
 					System.out.print("입금액: "); deposit = scan.nextInt();
-					/* 음수 또는 0원 입력 시 금액을 정확히 적어 달라는 메세지를 띄움 */
+					/* 음수 또는 0원 입력 시 금액을 정확히 적어 달라는 메세지를 띄워준다 */
 					if (deposit <= 0) {
 						System.out.println("\n금액을 정확히 입력해주세요.");
 						return;
